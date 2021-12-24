@@ -38,5 +38,26 @@ function initAccordion() {
       item.addEventListener('click', activeAccordion);
     })
   }
-}
+};
 initAccordion();
+
+function initSmoothScroll() {
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
+
+  function scrollToSection(event) {
+    event.preventDefault();
+
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+
+    section.scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+    });
+  };
+
+  linksInternos.forEach((item) => {
+    item.addEventListener('click', scrollToSection);
+  });
+};
+initSmoothScroll();
